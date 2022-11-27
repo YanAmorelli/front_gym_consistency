@@ -1,37 +1,37 @@
-import Yes from '../../assets/check-solid.svg';
-import No from '../../assets/xmark-solid.svg';
 import './main.css';
-import { useState } from 'react';
+import Action from './action'
+import { useEffect, useState } from 'react';
+import axios from "axios";
 
 function Main() {
-    // const [confirmation, setConfirmation] = useState(false);
+    const [response, setResponse] = useState({});
+
+    const getToday = () => {
+        let today = new Date();
+        return today.toISOString().slice(0,10);
+    }
+
+    useEffect(() => {
+        //TODO: Use axios in services not in the component
+        let today = getToday();
+        let url = `http://localhost:8080/getDate/${today}`
+        const options = {method: 'GET', url: url};
+        axios.request(options).then(function (response) {
+            let obj = {status: response.status, wentToGym: response.data.Went}
+            setResponse(obj);
+        });
+    }, []);
+    
 
     return(
-        <main className="main">
+        <main className="main"> 
             <h1 className='title'>
-            Did you went to the gym today?
-            </h1>   
-            <div className="row-buttons">
-            <div className='column-button'>
-                <button 
-                type="button" 
-                className="ok-button"
-                // onClick={setConfirmation(true)}
-                >
-                    <img src={Yes} alt="Yes"></img>
-                </button>
-            </div>
-            <div className='column-button'>
-                <button 
-                type="button" 
-                className="button"
-                // onClick={setConfirmation(false)}
-                >
-                <img src={No} alt="No"></img>
-                </button>
-            </div> 
-            </div>
-            <p className='text'>Veja seu progresso mensal</p>
+                Did you went to the gym today?
+            </h1>              
+            <Action
+                response={response}
+            /> 
+            <p className='text'>Click here to check your monthly frequency</p>
         </main>
     )
 }
