@@ -15,6 +15,16 @@
     text-align: center;
     margin-top: 150px;
   }
+
+  .link-text {
+    text-align: center;
+    margin-top: 150px;
+  }
+
+  .link-text:hover {
+    cursor: pointer;
+    font-size: larger;
+  }
   
   .row-buttons {
     display: flex;

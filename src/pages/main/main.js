@@ -1,18 +1,15 @@
 import './main.css';
+import { getToday } from '../../util/date';
 import Action from './action'
 import { useEffect, useState } from 'react';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 function Main() {
     const [response, setResponse] = useState({});
+    const [refresh, setRefresh] = useState(false);
 
-    const getToday = () => {
-        let today = new Date();
-        return today.toISOString().slice(0,10);
-    }
-
-    useEffect(() => {
-        //TODO: Use axios in services not in the component
+    const getTodayStatus = () => {
         let today = getToday();
         let url = `http://localhost:8080/getDate/${today}`
         const options = {method: 'GET', url: url};
@@ -20,8 +17,24 @@ function Main() {
             let obj = {status: response.status, wentToGym: response.data.Went}
             setResponse(obj);
         });
+    }
+
+    let navigate = useNavigate(); 
+        const routeChange = () =>{ 
+        let path = `monthlyStatus`; 
+        navigate(path);
+    }
+
+    useEffect(() => {
+        //TODO: Use axios in services not in the component
+        getTodayStatus();
     }, []);
     
+    useEffect(() => {
+        if (refresh === true)
+            getTodayStatus();
+
+    }, [refresh])
 
     return(
         <main className="main"> 
@@ -30,8 +43,9 @@ function Main() {
             </h1>              
             <Action
                 response={response}
+                onWasChecked={(e) => setRefresh(e)}
             /> 
-            <p className='text'>Click here to check your monthly frequency</p>
+            <p onClick={routeChange} className='link-text'>Click here to check your monthly frequency</p>
         </main>
     )
 }
