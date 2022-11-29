@@ -17,12 +17,11 @@ function Action(props, onWasChecked) {
             ok: check
           })
           .then(function (response) {
-            console.log(response);
+            window.location.reload(true)
           })
           .catch(function (error) {
-            console.log(error);
+            console.error(error);
         });
-        window.location.reload(true)
     }
 
     if (props.response.status === 204){
