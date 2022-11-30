@@ -30,3 +30,7 @@ It's really simple
 
 You can acess the application at:
 http://localhost:3000
+
+
+### Articles that can be important
+* https://jsramblings.com/dockerizing-a-react-app/
