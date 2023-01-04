@@ -1,9 +1,17 @@
 import "./login.css"
+import Logo from "../../assets/tff.png"
 
 function Login() {
     return(
+        // TODO: Create a header component: https://www.andraware.com/create-navigation-bar-html-css/ 
         <main className="main">
-            <div className="container">
+            <header>
+                <span class="image-clickable">
+                    <img src={Logo} alt="main-logo" class="logo"/>                
+                </span>      
+                <button className="signup-button">Sign Up</button>
+            </header>
+            <body className="container">
                 <div className="box">
                     <form>
                         <h1 className="title">Sign In</h1>
@@ -26,7 +34,7 @@ function Login() {
                         </div>
                     </form>
                 </div>
-            </div>
+            </body>
         </main>
     )
 }
