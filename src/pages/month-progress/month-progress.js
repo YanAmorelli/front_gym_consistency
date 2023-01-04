@@ -1,6 +1,7 @@
 import axios from "axios";
 import './month-progress.css'
 import { useEffect, useState } from "react";
+import NavBar from "../components/navbar/navbar";
 
 function MonthProgress() {
     const [response, setResponse] = useState({})
@@ -20,6 +21,9 @@ function MonthProgress() {
 
     return(
         <main className="main">
+            <NavBar 
+                wasAuthenticated={true}
+            />
             <h1 className="title">Your monthly frequency</h1>
             <p className="text">
                 You went {response.presentDays} days

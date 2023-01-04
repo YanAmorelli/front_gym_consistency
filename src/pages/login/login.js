@@ -5,7 +5,9 @@ function Login() {
     return(
         // TODO: Create conditional for NavBar on login. 
         <main className="main">
-            <NavBar></NavBar>            
+            <NavBar
+                wasAuthenticated={false}
+            />            
             <body className="container">
                 <div className="box">
                     <form>

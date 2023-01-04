@@ -1,22 +1,39 @@
 import Logo from "../../../assets/tff.png"
 import "./navbar.css"
 
-function NavBar() {
+function NavBar(props) {
+
+    function NavBarLogin() {
+        return (
+            <header>
+                <span className="image-clickable">
+                    <img src={Logo} alt="main-logo" className="logo"/>                
+                </span> 
+                <button className="signup-button">Sign Up</button>
+            </header>
+        );
+    };
+
+    function NavBarLogged() {
+        return (
+            <header className="navbar-header">
+                <span className="image-clickable">
+                    <img src={Logo} alt="main-logo" className="logo"/>                
+                </span> 
+                <nav>
+                    <ul className="nav-links">
+                        <li>Friends</li>
+                        <li>League</li>
+                        <li>My statistics</li>
+                        <li>amorelliaoyan</li>
+                    </ul>
+                </nav>  
+            </header>
+        );
+    };
+
     return(
-        // Todo: Create a conditional that only shows Sign Up if the user didn't login
-        <header>
-            <span class="image-clickable">
-                <img src={Logo} alt="main-logo" class="logo"/>                
-            </span> 
-            <nav>
-                <ul class="nav-links">
-                    <li>Friends</li>
-                    <li>League</li>
-                    <li>My statistics</li>
-                </ul>
-            </nav>     
-            <button className="signup-button">Sign Up</button>
-        </header>
+        props.wasAuthenticated ? NavBarLogged() : NavBarLogin() 
     )
 }
 

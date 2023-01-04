@@ -4,6 +4,7 @@ import Action from './action'
 import { useEffect, useState } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../components/navbar/navbar';
 
 function Main() {
     const [response, setResponse] = useState({});
@@ -38,6 +39,9 @@ function Main() {
 
     return(
         <main className="main"> 
+            <NavBar 
+                wasAuthenticated={true}
+            />
             <h1 className='title'>
                 Did you went to the gym today?
             </h1>              
