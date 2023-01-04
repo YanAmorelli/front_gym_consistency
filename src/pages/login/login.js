@@ -3,7 +3,6 @@ import NavBar from "../components/navbar/navbar"
 
 function Login() {
     return(
-        // TODO: Create conditional for NavBar on login. 
         <main className="main">
             <NavBar
                 wasAuthenticated={false}
