@@ -8,6 +8,11 @@ header {
 .image-clickable {
     margin-right: auto;    
 }
+
+.image-clickable:hover {
+    margin-right: auto;    
+    cursor: pointer;
+}
   
 .logo {
     margin-right: auto;

@@ -1,7 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 import Logo from "../../../assets/tff.png"
 import "./navbar.css"
 
 function NavBar(props) {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate("/");
+    }
 
     function NavBarLogin() {
         return (
@@ -17,7 +24,7 @@ function NavBar(props) {
     function NavBarLogged() {
         return (
             <header className="navbar-header">
-                <span className="image-clickable">
+                <span onClick={handleClick} className="image-clickable">
                     <img src={Logo} alt="main-logo" className="logo"/>                
                 </span> 
                 <nav>
