@@ -1,16 +1,11 @@
 import "./login.css"
-import Logo from "../../assets/tff.png"
+import NavBar from "../components/navbar/navbar"
 
 function Login() {
     return(
-        // TODO: Create a header component: https://www.andraware.com/create-navigation-bar-html-css/ 
+        // TODO: Create conditional for NavBar on login. 
         <main className="main">
-            <header>
-                <span class="image-clickable">
-                    <img src={Logo} alt="main-logo" class="logo"/>                
-                </span>      
-                <button className="signup-button">Sign Up</button>
-            </header>
+            <NavBar></NavBar>            
             <body className="container">
                 <div className="box">
                     <form>
