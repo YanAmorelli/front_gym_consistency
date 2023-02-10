@@ -19,8 +19,15 @@ function Routers() {
 
   return (
     <RouterRoot>      
-      <Route exact path="/" element={<Login />}></Route>
       <Route exact path="/login" element={<Login />}></Route>
+      
+      <Route exact path="/" 
+        element={
+          <Protected isSignedIn={isAuthenticated}>
+            <Main />
+          </Protected>
+      }>
+      </Route>
       
       <Route exact path="/monthlyStatus" 
         element={
