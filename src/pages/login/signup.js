@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/navbar/navbar"
@@ -12,8 +13,25 @@ function SignUp() {
     const [pass, setPass] = useState("");
     const [confirmPass, setConfirmPass] = useState("");
 
-    const createUser = () => {
+    const createUser = async () => {
         navigate("/");
+        const data = {
+            fullname: name,
+            username: user,
+            email: email,
+            password: pass, 
+            confirmation_password: confirmPass
+        };
+        await sendCreateUserRequest(data);
+    }
+
+    const sendCreateUserRequest = (newUser) => {
+        try {
+            axios.post("http://localhost:8080/signUpUser", newUser)
+        }
+        catch(error){
+            console.log(error);
+        }
     }
 
     return (
@@ -37,7 +55,7 @@ function SignUp() {
                         </div> 
 
                         <div className="form-field">
-                            <label htmlFor="femail" className="label-form">Username</label>
+                            <label htmlFor="femail" className="label-form">Email</label>
                             <input type={"email"} onChange={e => setEmail(e.target.value)} className="input-form"></input>
                         </div> 
 
