@@ -32,7 +32,7 @@ function ForgotPassword() {
             <body className="container">
                 <div className="forgot-pass-box">
                     <form onSubmit={requestNewPassword} >
-                        <h1 className="title">Forgot Password?e</h1>
+                        <h1 className="title">Forgot Password?</h1>
                         <div className="form-field">
                             <label htmlFor="fuser" className="label-form">Username</label>
                             <input type={"text"} onChange={e => setUser(e.target.value)} className="input-form"></input>
