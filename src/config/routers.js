@@ -5,8 +5,10 @@ import Login from "../pages/login/login";
 import Main from '../pages/main/main';
 import Protected from "./auth-guard";
 import MonthProgress from "../pages/month-progress/month-progress";
+import ForgotPassword from "../pages/login/forgot-passowrd";
 
 function Routers() {
+
   const isAuthenticated = getCookie("isAuthenticated");
 
   const RouterRoot = ({ children }) => (
@@ -20,7 +22,8 @@ function Routers() {
   return (
     <RouterRoot>      
       <Route exact path="/login" element={<Login />}></Route>
-      
+      <Route exact path="/forgotPassword" element={<ForgotPassword />}></Route>
+
       <Route exact path="/" 
         element={
           <Protected isSignedIn={isAuthenticated}>
