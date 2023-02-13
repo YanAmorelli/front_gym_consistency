@@ -1,28 +1,51 @@
+// https://stackoverflow.com/questions/63679339/axios-returning-pending-promise
+
 import "./login.css"
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/navbar/navbar"
-import { useState } from "react"
-import { Authenticate } from "../../services/auth"
+import { useEffect, useState } from "react"
+import { getCookie } from "../../util/cookie"
+// import { Authenticate, LoginUser } from "../../services/auth"
 
 function Login() {
 
     const navigate = useNavigate();
     const [user, setUser] = useState("");
     const [pass, setPass] = useState("");
-    
-    const authValidation = () => {
+    const isAuthenticated = getCookie("isAuthenticated");
+
+    useEffect(() => {
+        if(isAuthenticated==="True")
+            navigate("/");
+    }, [])
+
+    const authValidation = async() => {
         const data = {
-            "username": user,
-            "password": pass
-        };
-        const response = Authenticate(data);
-
-        if (response.logged) {
+            username: user,
+            password: pass
+        };      
+        
+        const response = await LoginUser(data);
+        
+        if (response.data.logged) {
             document.cookie = "isAuthenticated=True";        
-            navigate("/wentgym");
+            document.cookie = "tff_token="+response.data.token;
         }
+    }
 
-        return;
+    const LoginUser = (user) => {          
+        try {
+            const request = axios.post('http://localhost:8080/loginUser', user)
+            return request
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
+    const forgotPassword = () => {
+        navigate("/forgotPassword");
     }
 
     return(
@@ -32,7 +55,7 @@ function Login() {
             />            
             <body className="container">
                 <div className="box">
-                    <form>
+                    <form onSubmit={authValidation} >
                         <h1 className="title">Sign In</h1>
                         <div className="form-field">
                             <label htmlFor="femail" className="label-form">Username</label>
@@ -45,11 +68,11 @@ function Login() {
                         </div>
 
                         <div className="button-form">
-                            <button onClick={authValidation} className="login-button">Log In</button>
+                            <button type="submit" className="login-button">Log In</button>
                         </div>
                         
                         <div className="button-form">
-                            <p className="linktext-form">Forgot my password</p>
+                            <p onClick={forgotPassword} className="linktext-form">Forgot my password</p>
                         </div>
                     </form>
                 </div>
