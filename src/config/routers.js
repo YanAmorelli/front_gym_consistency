@@ -6,6 +6,7 @@ import Main from '../pages/main/main';
 import Protected from "./auth-guard";
 import MonthProgress from "../pages/month-progress/month-progress";
 import ForgotPassword from "../pages/login/forgot-passoword";
+import SignUp from "../pages/login/signup";
 
 function Routers() {
 
@@ -23,6 +24,7 @@ function Routers() {
     <RouterRoot>      
       <Route exact path="/login" element={<Login />}></Route>
       <Route exact path="/forgotPassword" element={<ForgotPassword />}></Route>
+      <Route exact path="/signUp" element={<SignUp />}></Route>
 
       <Route exact path="/" 
         element={

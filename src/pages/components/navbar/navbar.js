@@ -6,17 +6,21 @@ import "./navbar.css"
 function NavBar(props) {
     const navigate = useNavigate();
 
-    const handleClick = () => {
+    const goToHomePage = () => {
         navigate("/")
+    }
+
+    const goToSignUpPage = () => {
+        navigate("/signUp");
     }
 
     function NavBarLogin() {
         return (
             <header>
-                <span onClick={handleClick} className="image-clickable">
+                <span onClick={goToHomePage} className="image-clickable">
                     <img src={Logo} alt="main-logo" className="logo"/>                
                 </span> 
-                <button className="signup-button">Sign Up</button>
+                <button onClick={goToSignUpPage} className="signup-button">Sign Up</button>
             </header>
         );
     };
@@ -24,7 +28,7 @@ function NavBar(props) {
     function NavBarLogged() {
         return (
             <header className="navbar-header">
-                <span onClick={handleClick} className="image-clickable">
+                <span onClick={goToHomePage} className="image-clickable">
                     <img src={Logo} alt="main-logo" className="logo"/>                
                 </span> 
                 <nav>
