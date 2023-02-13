@@ -18,7 +18,7 @@ function Login() {
     useEffect(() => {
         if(isAuthenticated==="True")
             navigate("/");
-    }, [])
+    }, [isAuthenticated])
 
     const authValidation = async() => {
         const data = {
