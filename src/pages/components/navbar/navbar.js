@@ -7,13 +7,13 @@ function NavBar(props) {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate("/");
+        navigate("/")
     }
 
     function NavBarLogin() {
         return (
             <header>
-                <span className="image-clickable">
+                <span onClick={handleClick} className="image-clickable">
                     <img src={Logo} alt="main-logo" className="logo"/>                
                 </span> 
                 <button className="signup-button">Sign Up</button>

@@ -5,7 +5,7 @@ import Login from "../pages/login/login";
 import Main from '../pages/main/main';
 import Protected from "./auth-guard";
 import MonthProgress from "../pages/month-progress/month-progress";
-import ForgotPassword from "../pages/login/forgot-passowrd";
+import ForgotPassword from "../pages/login/forgot-passoword";
 
 function Routers() {
 
