@@ -53,26 +53,3 @@ li:hover {
     position: absolute;
     bottom: 0;
 }
-
-.signup-button {
-    background-color: var(--laranja);
-    color: #fff;
-    cursor: pointer;
-    padding: 9px 20px;
-    border: none;
-    border-radius: 50px;
-    font-size: 1rem;
-    margin-left: 20px;
-}
-  
-.signup-button:hover {
-    background: var(--azul);
-    cursor: pointer;
-}
-
-.profile-button {
-    color: #fff;
-    border: none;
-    font-size: 1rem;
-    margin-left: 20px;
-}

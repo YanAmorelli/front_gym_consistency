@@ -1,10 +1,10 @@
 import { useState } from "react"
-import NavBar from "../components/navbar/navbar"
 import "./login.css"
 import axios from "axios";
 import "./forgot-password.css"
 import { AlertPromise } from "../components/alerts/alerts";
 import { ToastContainer } from "react-toastify";
+import { HeaderLogin } from "./header/header";
 
 function ForgotPassword() {
     const [user, setUser] = useState();
@@ -23,9 +23,7 @@ function ForgotPassword() {
 
     return (
         <main className="main">
-            <NavBar
-                wasAuthenticated={false}
-            />            
+            <HeaderLogin /> 
             <body className="container">
                 <div className="forgot-pass-box">
                     <form onSubmit={requestNewPassword} >

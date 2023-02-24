@@ -2,10 +2,10 @@
 import "./login.css";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import NavBar from "../components/navbar/navbar";
+import { HeaderLogin } from "./header/header";
 import { useState } from "react";
 import { ToastContainer } from 'react-toastify';
-import { AlertError } from './../components/alerts/alerts';
+import { AlertError } from '../components/alerts/alerts';
 
 function Login() {
 
@@ -49,9 +49,7 @@ function Login() {
 
     return(
         <main className="main">
-            <NavBar
-                wasAuthenticated={false}
-            />            
+            <HeaderLogin />
             <body className="container">
                 <div className="box">
                     <form onSubmit={authValidation} >

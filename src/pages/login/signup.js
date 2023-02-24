@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../components/navbar/navbar"
 import { AlertError, AlertSuccess } from "../components/alerts/alerts";
 import "./signup.css"
 import { ToastContainer } from "react-toastify";
+import { HeaderLogin } from "./header/header";
 
 function SignUp() {
 
@@ -49,9 +49,7 @@ function SignUp() {
 
     return (
         <main className="main">
-            <NavBar
-                wasAuthenticated={false}
-            />            
+            <HeaderLogin /> 
             <body className="container">
                 <div className="signup-box">
                     <form onSubmit={createUser} >
