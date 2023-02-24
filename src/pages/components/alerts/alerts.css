@@ -1,0 +1,17 @@
+.alert-error {
+    font: var(--font) !important;
+    font-size: 16px !important;
+    /* background-color: var(--laranja); */
+    /* --toastify-icon-color-error: var(--neve) !important; */
+    /* --toastify-color-progress-error: var(--neve) !important; */
+}
+
+.alert-success {
+    font: var(--font) !important;
+    font-size: 16px !important;
+}
+
+.alert-loading {
+    font: var(--font) !important;
+    font-size: 16px !important;
+}

@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import { getCookie } from "../util/cookie"
 import Login from "../pages/login/login";
 import Main from '../pages/main/main';
 import Protected from "./auth-guard";
@@ -9,8 +8,6 @@ import ForgotPassword from "../pages/login/forgot-passoword";
 import SignUp from "../pages/login/signup";
 
 function Routers() {
-
-  const isAuthenticated = getCookie("isAuthenticated");
 
   const RouterRoot = ({ children }) => (
     <Router>
@@ -28,7 +25,7 @@ function Routers() {
 
       <Route exact path="/" 
         element={
-          <Protected isSignedIn={isAuthenticated}>
+          <Protected>
             <Main />
           </Protected>
       }>
@@ -36,7 +33,7 @@ function Routers() {
       
       <Route exact path="/monthlyStatus" 
         element={
-          <Protected isSignedIn={isAuthenticated}>
+          <Protected>
             <MonthProgress />
           </Protected>
       }>
@@ -44,7 +41,7 @@ function Routers() {
       
       <Route exact path="/wentGym"  
         element={
-          <Protected isSignedIn={isAuthenticated}>
+          <Protected>
             <Main />
           </Protected>
       }>

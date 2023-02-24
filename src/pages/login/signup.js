@@ -2,7 +2,9 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/navbar/navbar"
+import { AlertError, AlertSuccess } from "../components/alerts/alerts";
 import "./signup.css"
+import { ToastContainer } from "react-toastify";
 
 function SignUp() {
 
@@ -13,8 +15,8 @@ function SignUp() {
     const [pass, setPass] = useState("");
     const [confirmPass, setConfirmPass] = useState("");
 
-    const createUser = async () => {
-        navigate("/");
+    const createUser = async (e) => {
+        e.preventDefault();
         const data = {
             fullname: name,
             username: user,
@@ -22,12 +24,23 @@ function SignUp() {
             password: pass, 
             confirmation_password: confirmPass
         };
-        await sendCreateUserRequest(data);
+        try {
+            await sendCreateUserRequest(data).then(res =>{
+                if (res !== undefined){
+                    AlertSuccess("Usuário criado com sucesso!")
+                    navigate("/");
+                }
+            });
+        }
+        catch (err) {
+            AlertError(err.response.data.error);
+        }
     }
 
     const sendCreateUserRequest = (newUser) => {
         try {
-            axios.post("http://localhost:8080/signUpUser", newUser)
+            const request = axios.post("http://localhost:8080/signUpUser", newUser);
+            return request;
         }
         catch(error){
             console.log(error);
@@ -42,6 +55,7 @@ function SignUp() {
             <body className="container">
                 <div className="signup-box">
                     <form onSubmit={createUser} >
+                        <ToastContainer />
                         <h1 className="title">New user?</h1>
 
                         <div className="form-field">

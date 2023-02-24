@@ -3,25 +3,22 @@ import NavBar from "../components/navbar/navbar"
 import "./login.css"
 import axios from "axios";
 import "./forgot-password.css"
-import { useNavigate } from "react-router-dom"
+import { AlertPromise } from "../components/alerts/alerts";
+import { ToastContainer } from "react-toastify";
 
 function ForgotPassword() {
-    const navigate = useNavigate();
     const [user, setUser] = useState();
 
-    const requestNewPassword = () => {
+    const requestNewPassword = (e) => {
+        e.preventDefault();
         const data = {username: user};
-        sendRequestNewPassword(data);
-        navigate("/")
-    }
+        const successMessage = "Email com nova senha enviado com sucesso!";
+        AlertPromise(sendRequestNewPassword(data), successMessage);
+    };
 
     const sendRequestNewPassword = (user) => {
-        try {
-            axios.post("http://localhost:8080/forgetPassword", user);
-        }
-        catch(error) {
-            console.error(error);
-        };
+        const request = axios.post("http://localhost:8080/forgetPassword", user, setTimeout(3000));
+        return request;
     }
 
     return (
@@ -32,6 +29,7 @@ function ForgotPassword() {
             <body className="container">
                 <div className="forgot-pass-box">
                     <form onSubmit={requestNewPassword} >
+                        <ToastContainer />
                         <h1 className="title">Forgot Password?</h1>
                         <div className="form-field">
                             <label htmlFor="fuser" className="label-form">Username</label>
@@ -48,5 +46,4 @@ function ForgotPassword() {
         </main>
     )
 }
-
 export default ForgotPassword
