@@ -27,19 +27,15 @@ function NavBar(props) {
 
     function NavBarLogged() {
         return (
-            <header className="navbar-header">
-                <span onClick={goToHomePage} className="image-clickable">
+            <ul>
+                <li className="image-logo" onClick={goToHomePage}>
                     <img src={Logo} alt="main-logo" className="logo"/>                
-                </span> 
-                <nav>
-                    <ul className="nav-links">
-                        <li>Friends</li>
-                        <li>League</li>
-                        <li>My statistics</li>
-                        <li>amorelliaoyan</li>
-                    </ul>
-                </nav>  
-            </header>
+                </li>
+                <li>Friends</li>
+                <li>League</li>
+                <li>My statistics</li>
+                <li className="user-menu">amorelliaoyan</li>
+            </ul>
         );
     };
 
