@@ -3,9 +3,18 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../../../assets/tff.png"
 import User from "../../../assets/generic-user.svg"
 import "./navbar.css"
+import { useEffect, useState } from "react";
+import { getCookie, parseJwt } from "../../../util/cookie";
 
 function NavBar() {
     const navigate = useNavigate();
+    const [username, setUsername] = useState();
+
+    useEffect(() => {
+        const jwt = getCookie("tff_token");
+        const userInfo = parseJwt(jwt);
+        setUsername(userInfo.username);
+    }, []);
 
     const goToHomePage = () => {
         navigate("/")
@@ -27,7 +36,7 @@ function NavBar() {
                     <img src={User} alt="user" className="user-photo"></img>
                     <span className="user-info">
                         <p>Yan</p>
-                        <p>@amorelliaoyan</p>
+                        <p>@{username}</p>
                     </span>
                 </li>
             </span>

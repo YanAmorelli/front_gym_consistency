@@ -5,4 +5,12 @@ export function getCookie(name) {
       cookie[k.trim()] = v;
     })
     return cookie[name];
+}
+
+export const parseJwt = (token) => {
+  try {
+    return JSON.parse(atob(token.split('.')[1]));
+  } catch (e) {
+    return null;
   }
+};
