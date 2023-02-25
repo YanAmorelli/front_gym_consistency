@@ -1,3 +1,4 @@
+// https://www.geeksforgeeks.org/pure-css-responsive-side-menu-layout/
 import { useNavigate } from "react-router-dom";
 import Logo from "../../../assets/tff.png"
 import User from "../../../assets/generic-user.svg"
@@ -10,14 +11,17 @@ function NavBar() {
         navigate("/")
     };
 
+    const goToStatisticsPage = () => {
+        navigate("/monthlyStatus");
+    }
+
     return (
         <ul>
             <li className="image-logo" onClick={goToHomePage}>
                 <img src={Logo} alt="main-logo" className="logo"/>                
             </li>
             <li>Friends</li>
-            <li>League</li>
-            <li>My statistics</li>
+                <li onClick={goToStatisticsPage}>My statistics</li>
             <span className="container-user-menu">
                 <li className="container-user-li">
                     <img src={User} alt="user" className="user-photo"></img>
