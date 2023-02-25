@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Logo from "../../../assets/tff.png"
+import User from "../../../assets/generic-user.svg"
 import "./navbar.css"
 
 function NavBar() {
@@ -18,8 +19,12 @@ function NavBar() {
             <li>League</li>
             <li>My statistics</li>
             <span className="container-user-menu">
-                <li>
-                    amorelliaoyan
+                <li className="container-user-li">
+                    <img src={User} alt="user" className="user-photo"></img>
+                    <span className="user-info">
+                        <p>Yan</p>
+                        <p>@amorelliaoyan</p>
+                    </span>
                 </li>
             </span>
         </ul>
