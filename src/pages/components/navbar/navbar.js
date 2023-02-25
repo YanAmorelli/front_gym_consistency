@@ -17,7 +17,11 @@ function NavBar() {
             <li>Friends</li>
             <li>League</li>
             <li>My statistics</li>
-            <li className="user-menu">amorelliaoyan</li>
+            <span className="container-user-menu">
+                <li>
+                    amorelliaoyan
+                </li>
+            </span>
         </ul>
     );
 };
