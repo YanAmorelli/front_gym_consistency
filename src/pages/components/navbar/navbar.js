@@ -22,15 +22,19 @@ function NavBar() {
 
     const goToStatisticsPage = () => {
         navigate("/monthlyStatus");
-    }
+    };
+
+    const goToFriendsPage = () => {
+        navigate("/friends");
+    };
 
     return (
         <ul>
             <li className="image-logo" onClick={goToHomePage}>
                 <img src={Logo} alt="main-logo" className="logo"/>                
             </li>
-            <li>Friends</li>
-                <li onClick={goToStatisticsPage}>My statistics</li>
+            <li onClick={goToFriendsPage}>Friends</li>
+            <li onClick={goToStatisticsPage}>My statistics</li>
             <span className="container-user-menu">
                 <li className="container-user-li">
                     <img src={User} alt="user" className="user-photo"></img>

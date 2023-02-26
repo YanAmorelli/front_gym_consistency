@@ -6,6 +6,7 @@ import Protected from "./auth-guard";
 import MonthProgress from "../pages/month-progress/month-progress";
 import ForgotPassword from "../pages/login/forgot-passoword";
 import SignUp from "../pages/login/signup";
+import Friends from "../pages/Friends/friends";
 
 function Routers() {
 
@@ -28,15 +29,7 @@ function Routers() {
           <Protected>
             <Main />
           </Protected>
-      }>
-      </Route>
-      
-      <Route exact path="/monthlyStatus" 
-        element={
-          <Protected>
-            <MonthProgress />
-          </Protected>
-      }>
+        }>
       </Route>
       
       <Route exact path="/wentGym"  
@@ -44,8 +37,27 @@ function Routers() {
           <Protected>
             <Main />
           </Protected>
-      }>
-    </Route>
+        }>
+      </Route>
+      
+      <Route exact path="/monthlyStatus" 
+        element={
+          <Protected>
+            <MonthProgress />
+          </Protected>
+        }>
+      </Route>
+
+      <Route exact path="/friends" 
+        element={
+          <Protected>
+            <Friends />
+          </Protected>
+        }>
+      </Route>
+
+      
+      
     </RouterRoot>
   )
 }

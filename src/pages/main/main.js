@@ -39,9 +39,7 @@ function Main() {
 
     return(
         <main className="main"> 
-            <NavBar 
-                wasAuthenticated={true}
-            />
+            <NavBar/>
             <h1 className='title'>
                 Did you went to the gym today?
             </h1>              
